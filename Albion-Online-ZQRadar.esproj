@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.128-alpha">
+  <ItemGroup>
+    <TypeScriptConfiguration Remove="scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Utils\Utils.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Utils\Settings.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Utils\DrawingUtils.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\tailwind.output.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\init-alpine.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\PlayersHandler.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\MobsInfo.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\MobsHandler.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\Map.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\ItemsInfo.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\HarvestablesHandler.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\DungeonsHandler.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Handlers\ChestsHandler.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\enumerations\Protocol16Type.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\PlayersDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\MobsDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\MapsDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\HarvestablesDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\DungeonsDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\Drawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\Drawings\ChestsDrawing.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\classes\Protocol16Deserializer.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\classes\PhotonPacketParser.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\classes\PhotonPacket.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\classes\PhotonCommand.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="scripts\alpine.min.js" />
+  </ItemGroup>
+</Project>
