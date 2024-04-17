@@ -153,9 +153,8 @@ class HarvestablesHandler
         const type = Parameters[5];
         const tier = Parameters[7];
         const location = Parameters[8];
-
-        let enchant = Parameters[11] === undefined ? 0 : Parameters[11];
         let size = Parameters[10] === undefined ? 0 : Parameters[10];
+        let enchant = Parameters[11] === undefined ? 0 : Parameters[11];
 
         this.UpdateHarvestable(id, type, tier, location[0], location[1], enchant, size);
     }
