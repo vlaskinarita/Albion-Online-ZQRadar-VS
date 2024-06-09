@@ -58,30 +58,35 @@
                 </label>
                 <label class="flex items-center">
                     <input type="checkbox" id="settingBossGriffin" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                    <span class="dark:text-white ml-2">Grifin</span>
+                    <span class="dark:text-white ml-2">Griffin</span>
                 </label>
 			</div>
 		</div>
-        <div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
+			<div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
 			<div>
-                <h4 class="mb-4 text-2xl font-semibold text-gray-600 dark:text-gray-300">
-                    Other
-                </h4>
-                <label class="flex items-center">
-                    <input type="checkbox" id="settingAvaloneDrones" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                    <span class="dark:text-white ml-2">Avalone Drones</span>
-                </label>
-                <label class="flex items-center">
-                    <input type="checkbox" id="settingShowUnmanagedEnemies" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                    <span class="dark:text-white ml-2">Show enemies with unmanaged ids?</span>
-                </label>
-                <label class="flex items-center">
-                    <input type="checkbox" id="settingShowEventEnemies" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
-                    <span class="dark:text-white ml-2">Event enemies</span>
-                </label>
+				<h4 class="mb-4 text-2xl font-semibold text-gray-600 dark:text-gray-300">
+				Other
+				</h4>
+				<!-- Existing Settings -->
+				<label class="flex items-center">
+				<input type="checkbox" id="settingAvaloneDrones" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+				<span class="dark:text-white ml-2">Avalone Drones</span>
+				</label>
+				<label class="flex items-center">
+				<input type="checkbox" id="settingShowUnmanagedEnemies" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+				<span class="dark:text-white ml-2">Show enemies with unmanaged ids?</span>
+				</label>
+				<label class="flex items-center">
+				<input type="checkbox" id="settingShowEventEnemies" class="h-5 w-5 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+				<span class="dark:text-white ml-2">Event enemies</span>
+				</label>
+				<!-- New Minimum HP Setting -->
+				<label class="flex items-center mt-4">
+				<span class="dark:text-white mr-2">Min HP:</span>
+				<input type="number" id="settingMinHP" class="h-5 w-20 text-indigo-600 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500" min="1" max="1000000" value="1">
+				</label>
 			</div>
-		</div>
-
+			</div>
         <div class="flex items-start p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800 ">
 			<div>
                 <h4 class="mb-4 text-2xl font-semibold text-gray-600 dark:text-gray-300">
@@ -204,7 +209,19 @@
     const settingShowEventEnemies = document.getElementById("settingShowEventEnemies");
     settingShowEventEnemies.checked = returnLocalBool("settingShowEventEnemies");
     settingShowEventEnemies.addEventListener("click", () => {localStorage.setItem("settingShowEventEnemies", settingShowEventEnemies.checked);});
-
+	
+	const settingMinHP = document.getElementById("settingMinHP");
+	settingMinHP.value = localStorage.getItem("settingMinHP") || 1;
+	settingMinHP.addEventListener("change", () => {
+        let minHPValue = parseInt(settingMinHP.value, 10);
+        if (isNaN(minHPValue) || minHPValue < 1) {
+            minHPValue = 1;
+        } else if (minHPValue > 1000000) {
+            minHPValue = 1000000;
+        }
+        settingMinHP.value = minHPValue;
+        localStorage.setItem("settingMinHP", minHPValue);
+	});
     //#endregion
 
     //#region Mists

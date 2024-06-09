@@ -1,79 +1,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ZQRadar Drawing</title>
+    <title>A Youtube Video ( ͡° ͜ʖ ͡°)</title>
     <style>
-        body{
+        body {
             background-color: #121317;
         }
-        
-        /* Position the canvases, with the topCanvas above the gridCanvas */
-        #mapCanvas {
+
+        /* Position the canvases */
+        #mapCanvas, #gridCanvas, #ourPlayerCanvas, #drawCanvas {
             position: absolute;
             top: 0;
             left: 0;
             margin: 10px;
         }
 
-        #gridCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 10px;
+        #gridCanvas, #playersCanvas, #rightCanvas {
             border: 2px solid grey;
         }
 
-        #drawCanvas {
+        #rightCanvas {
             position: absolute;
             top: 0;
-            left: 0;
+            left: 520px; /* Position to the right of mapCanvas which is 500px wide plus margin */
             margin: 10px;
+            width: 500px;
+            height: 500px;
+            overflow-y: auto; /* Add vertical scroll if content overflows */
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
-        #ourPlayerCanvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            margin: 10px;
+        #playersCanvas {
+            position: relative; /* Change to relative to stay inside the container */
+            width: 100%;
+            height: 100%;
         }
 
-        #button {
+        #buttonContainer, #volumeContainer {
             position: absolute;
-            top: 10px;
             background-color: #1a1c23;
-            color:white;
+            color: white;
             margin: 10px;
             border: 1px solid gray;
             padding: 8px 18px;
             cursor: pointer;
-            left: 520px; /* Adjust the left position to be to the right of the canvases */
         }
 
-        #logEnemiesList {
-            position: absolute;
-            top: 50px;
-            background-color: #1a1c23;
-            color:white;
+        #buttonContainer {
+            top: 520px;
+            left: 0;
+        }
+
+        #volumeContainer {
+            top: 520px;
+            left: 800px; /* Adjusted left position further to the right */
+        }
+
+        #button, #logEnemiesList, #sonarButton, #announcerButton {
             margin: 10px;
+            background-color: #1a1c23;
+            color: white;
             border: 1px solid gray;
             padding: 8px 18px;
             cursor: pointer;
-            left: 520px; /* Adjust the left position to be to the right of the canvases */
+        }
+
+        #volumeLabel, #volumeSlider, #playerVolumeLabel, #playerVolumeSlider, #announcerVolumeLabel, #announcerVolumeSlider {
+            display: block;
+            margin: 10px;
+        }
+
+        #volumeLabel, #playerVolumeLabel, #announcerVolumeLabel {
+            background-color: transparent;
+            margin: 0;
+            border: none;
+            padding: 0;
         }
 
         #canvasContainer {
             position: relative;
-        }
-
-        #thirdCanvas {
-   
-            position: absolute;
-            top: 520px;
-     
-            margin: 10px;
-            bottom: 0;
-            left: 0;
-            border: 2px solid grey;
         }
     </style>
 </head>
@@ -81,26 +86,38 @@
     <div id="canvasContainer">
         <canvas id="mapCanvas" width="500" height="500"></canvas>
         <canvas id="gridCanvas" width="500" height="500"></canvas>
-        <canvas id="drawCanvas" width="500" height="500"></canvas>
         <canvas id="ourPlayerCanvas" width="500" height="500"></canvas>
-        <canvas id="thirdCanvas" width="500" height="500" ></canvas>
-        <button id="button">Clear</button>
-        <button id="logEnemiesList">Log Enemies List</button>
+        <div id="rightCanvas">
+            <canvas id="playersCanvas" width="500" height="500"></canvas>
+        </div>
+        <canvas id="drawCanvas" width="500" height="500"></canvas>
+        <div id="buttonContainer">
+            <button id="button">Clear</button>
+            <button id="logEnemiesList">Log Enemies List</button>
+            <button id="sonarButton">Enable Sonar</button>
+            <button id="announcerButton">Enable Player Direction Announcer</button> <!-- New button -->
+        </div>
+        <div id="volumeContainer">
+            <label id="volumeLabel" for="volumeSlider">Sonar Volume:</label>
+            <input type="range" id="volumeSlider" min="0" max="100" value="2">
+            <label id="playerVolumeLabel" for="playerVolumeSlider">Player Detected Volume:</label>
+            <input type="range" id="playerVolumeSlider" min="0" max="100" value="50">
+            <label id="announcerVolumeLabel" for="announcerVolumeSlider">Announcer Volume:</label>
+            <input type="range" id="announcerVolumeSlider" min="0" max="100" value="50"> <!-- New volume slider -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.10/signalr.min.js"></script>
     <script src="/scripts/Handlers/HarvestablesHandler.js"></script>
-    <script src="/scripts/Handlers/MobsHandler.js"></script>
     <script src="/scripts/Handlers/ChestsHandler.js"></script>
-    <script src="/scripts/Handlers/DungeonsHandler.js"></script>  
-    <script src="/scripts/Handlers/Map.js"></script>  
-    <script src="/scripts/Handlers/MobsInfo.js"></script>
+    <script src="/scripts/Handlers/DungeonsHandler.js"></script>
+    <script src="/scripts/Handlers/Map.js"></script>
     <script src="/scripts/Handlers/ItemsInfo.js"></script>
     <script src="/scripts/Handlers/FactionFlagInfo.js"></script>
     <script src="/scripts/Utils/DrawingUtils.js"></script>
     <script src="/scripts/Utils/Settings.js"></script>
     
-    <script type="module" src="/scripts/Utils/Utils.js"></script> 
+    <script type="module" src="/scripts/Utils/Utils.js"></script>
 </body>
 </html>
