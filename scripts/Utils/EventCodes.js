@@ -18,9 +18,10 @@ export const EventCodes =
     MountStart: 204,
     MountCancel: 205,
     NewRandomDungeon: 311,
-    FishingFinished: 344,
-    NewFishingZoneObject: 347,
     NewLootChest: 380,
     NewMistsCagedWisp: 517,
     MistsWispCageOpened: 518,
+
+    FishingFinished: 344,
+    NewFishingZoneObject: 347,
 }
